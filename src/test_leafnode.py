@@ -40,6 +40,15 @@ class TestLeafNode(unittest.TestCase):
             '<span id="span_area" class="red_text">This thing has properties.</span>',
         )
 
+    def test_leaf_to_html_empty_value(self):
+        node = LeafNode(
+            "div",
+            "",
+            {"foo": "bar", "class": "blue_text"},
+        )
+        with self.assertRaises(ValueError):
+            node.to_html()
+
 
 if __name__ == "__main__":
     unittest.main()

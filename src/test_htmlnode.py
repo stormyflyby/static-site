@@ -25,6 +25,11 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode()
         self.assertEqual(f"{node}", "HTMLNode(None, None, None, props: { })")
 
+    def test_to_html(self):
+        node = HTMLNode(props={"href": "https://google.com", "target": "_blank"})
+        with self.assertRaises(NotImplementedError):
+            node.to_html()
+
 
 if __name__ == "__main__":
     unittest.main()
