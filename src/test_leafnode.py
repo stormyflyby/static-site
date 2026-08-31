@@ -21,6 +21,14 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode("", "This has an empty tag.")
         self.assertEqual(node.to_html(), "This has an empty tag.")
 
+    def test_leaf_to_html_no_tag_props(self):
+        node = LeafNode(
+            "",
+            "This has an empty tag but with properties.",
+            {"id": "sentence", "class": "no_tag"},
+        )
+        self.assertEqual(node.to_html(), "This has an empty tag but with properties.")
+
     def test_leaf_to_html_props(self):
         node = LeafNode(
             "span",
