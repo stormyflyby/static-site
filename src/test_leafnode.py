@@ -43,11 +43,22 @@ class TestLeafNode(unittest.TestCase):
     def test_leaf_to_html_empty_value(self):
         node = LeafNode(
             "div",
-            "",
+            None,
             {"foo": "bar", "class": "blue_text"},
         )
         with self.assertRaises(ValueError):
             node.to_html()
+
+    def test_leaf_to_html_image(self):
+        node = LeafNode(
+            "img",
+            "",
+            {"src": "https://picture.com/thing.jpg", "alt": "picture of a thing"},
+        )
+        self.assertEqual(
+            node.to_html(),
+            '<img src="https://picture.com/thing.jpg" alt="picture of a thing"></img>',
+        )
 
 
 if __name__ == "__main__":

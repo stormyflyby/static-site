@@ -21,6 +21,18 @@ This is another paragraph with _italic_ text and `code` here
             "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p><p>This is another paragraph with <i>italic</i> text and <code>code</code> here</p></div>",
         )
 
+    def test_heading(self):
+        md = """
+# This is a heading.
+
+### So is this.
+"""
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html, "<div><h1>This is a heading.</h1><h3>So is this.</h3></div>"
+        )
+
     def test_codeblock(self):
         md = """
 ```

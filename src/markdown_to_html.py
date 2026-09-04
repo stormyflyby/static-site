@@ -39,9 +39,9 @@ def block_to_html_node(block: str, block_type: BlockType) -> HTMLNode:
             children = text_to_children(new_line_to_space)
             return ParentNode("p", children)
         case BlockType.HEADING:
-            heading_number = heading_number(block)
+            number = heading_number(block)
             children = text_to_children(block_text)
-            return ParentNode(f"h{heading_number}", children)
+            return ParentNode(f"h{number}", children)
         case BlockType.CODE:
             code = text_node_to_html_node(TextNode(block_text, TextType.CODE_TEXT))
             return ParentNode("pre", [code])

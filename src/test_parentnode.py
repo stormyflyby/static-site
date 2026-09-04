@@ -69,7 +69,7 @@ class TestParentNode(unittest.TestCase):
         self.assertEqual(parent_node.to_html(), "<b>This has no tag</b>")
 
     def test_to_html_child_with_no_value(self):
-        child_node = LeafNode("span", "")
+        child_node = LeafNode("span", None)
         parent_node = ParentNode("button", [child_node])
         with self.assertRaises(ValueError):
             parent_node.to_html()
